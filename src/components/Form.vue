@@ -41,7 +41,7 @@
         },
         methods: {
             citySubmit() {
-                axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + this.city + '&APPID=cd24e008a27243e0786cb71906677d9a&units=metric')
+                axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + this.city + '&APPID=cd24e008a27243e0786cb71906677d9a&units=metric')
                     .then(response => {
                         this.results = response.data;
                         this.city = '';
