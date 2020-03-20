@@ -10,7 +10,6 @@
                         rounded
                         @keyup.enter="citySubmit"
                         aria-autocomplete="none"
-                        autofocus
                         v-model="city"
                 />
             </v-col>
@@ -29,19 +28,30 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         name: 'Form',
         data() {
             return {
-                city: "Częstochowa",
-                result: []
+                city: 'Częstochowa',
+                results: [],
+                error: []
             }
         },
         methods: {
             citySubmit() {
-                console.log(this.city);
-                this.city = '';
+                axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + this.city + '&APPID=cd24e008a27243e0786cb71906677d9a&units=metric')
+                    .then(response => {
+                        this.results = response.data;
+                        this.city = '';
+                        console.log(this.results);
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        alert('Błąd - "' + error + '"')
+                    });
             }
-        },
+        }
     }
 </script>

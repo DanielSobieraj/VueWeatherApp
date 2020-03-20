@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <v-container fill-height>
-            <v-row>
+            <v-row justify="center">
                 <v-col>
                     <v-img
                             alt="Sun logo"
@@ -18,42 +18,28 @@
                 <Result/>
             </v-content>
         </v-container>
+        <v-footer dark class="d-flex justify-center">
+            <audio controls autoplay preload>
+                <source src="../assets/music.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <br>
+            <h3 style="width: 100%" class="text-end">Wykonał Daniel Sobieraj</h3>
+        </v-footer>
     </v-app>
 </template>
 
 <script>
-    import axios from 'axios'
     import Form from './Form';
     import Result from "./Result";
-
-    const api = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=cd24e008a27243e0786cb71906677d9a&units=metric';
 
     export default {
         name: 'App',
         data() {
             return {
-                value: Form.data().city,
-                city: '',
-                date: '',
-                temp: '',
-                wind: '',
-                pressure: '',
-                sunrise: '',
-                sunset: '',
-                error: '',
+                result: Form.data().result,
+                error: Form.data().error
             }
-        },
-        mounted() {
-            axios.get(api)
-                .then(response => {
-                    this.city = response.data.name;
-                    this.date = response.data.date;
-                    this.temp = response.data.temp;
-                })
-                .catch(error => {
-                    this.error = error.message;
-                    console.log(error)
-                });
         },
         components: {
             Form,

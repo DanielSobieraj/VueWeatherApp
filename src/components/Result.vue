@@ -1,33 +1,51 @@
 <template>
-    <v-app>
-        <h1>Pogoda dla {{ city }}</h1>
-        <h3>Dane dla dnia i godziny ...</h3>
-        <v-icon>fa-temperature-high</v-icon>
-        <p>Aktualna temperatura ...</p>
-        <p>Aktualna prędkość wiatru ...</p>
-        <p>Aktualne ciśnienie wynosi ...</p>
-        <p>Wschód słońca ...</p>
-        <p>Zachód słońca ...</p>
-    </v-app>
+    <v-container text-center>
+        <v-row>
+            <v-col >
+<!--                :key="result.id" v-for="result in results"-->
+                <h1>Pogoda dla</h1>
+                <h2>
+                    <v-icon color="rgb(255,193,7)">fa-city</v-icon>
+                    {{  }}
+                </h2>
+                <br>
+                <hr>
+                <br>
+                <h3>Dane dla dnia i godziny</h3>
+                <p>
+                    <v-icon color="rgb(255,193,7)">fa-temperature-low</v-icon>
+                    Aktualna temperatura
+                </p>
+                <p>{{  }}</p>
+                <p>
+                    <v-icon color="rgb(255,193,7)">fa-wind</v-icon>
+                    Aktualna prędkość wiatru
+                </p>
+                <p>
+                    <v-icon color="rgb(255,193,7)">fa-smog</v-icon>
+                    Aktualne ciśnienie wynosi
+                </p>
+                <p>
+                    <v-icon color="rgb(255,193,7)">fa-sun</v-icon>
+                    Wschód słońca
+                </p>
+                <p>
+                    <v-icon color="rgb(255,193,7)">fa-moon</v-icon>
+                    Zachód słońca
+                </p>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
-    import App from "@/components/App";
-
     export default {
         name: "Result",
         data() {
             return {
-                city: App.data().city,
-                date: '',
-                temp: '',
-                wind: '',
-                pressure: '',
-                sunrise: '',
-                sunset: '',
-                error: '',
+                result: [],
             }
-        },
+        }
     }
 </script>
 
