@@ -39,8 +39,6 @@
         name: 'App',
         data() {
             return {
-                result: Form.data().result,
-                error: Form.data().error
             }
         },
         components: {

@@ -1,4 +1,3 @@
-<script src="../store/index.js"></script>
 <template>
     <v-container>
         <v-row class="d-flex justify-center">
@@ -29,7 +28,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
     import store from '../store'
 
     export default {
@@ -56,5 +55,5 @@
                     });
             }
         }
-    }
+    };
 </script>
