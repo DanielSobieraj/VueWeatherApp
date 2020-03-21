@@ -2,16 +2,18 @@
     <v-app>
         <v-container fill-height>
             <v-row justify="center">
-                <v-col>
-                    <v-img
-                            alt="Sun logo"
-                            contain
-                            height="64px"
-                            src="../assets/sun.png"
-                    >
-                    </v-img>
-                    <h1 class="text-center">Aplikacja pogodowa</h1>
-                </v-col>
+
+                    <v-col>
+                        <v-img
+                                alt="Sun logo"
+                                contain
+                                height="64px"
+                                src="../assets/sun.png"
+                        >
+                        </v-img>
+
+                        <h1 class="text-center">Aplikacja pogodowa</h1>
+                    </v-col>
             </v-row>
             <v-content>
                 <Form/>

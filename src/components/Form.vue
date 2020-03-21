@@ -1,3 +1,4 @@
+<script src="../store/index.js"></script>
 <template>
     <v-container>
         <v-row class="d-flex justify-center">
@@ -29,6 +30,7 @@
 
 <script>
     import axios from 'axios'
+    import store from '../store'
 
     export default {
         name: 'Form',
@@ -45,6 +47,7 @@
                     .then(response => {
                         this.results = response.data;
                         this.city = '';
+                        store.commit('result',this.results);
                         console.log(this.results);
                     })
                     .catch(error => {
