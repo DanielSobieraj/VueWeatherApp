@@ -46,8 +46,7 @@
                     .then(response => {
                         this.results = response.data;
                         this.city = '';
-                        store.commit('result',this.results);
-                        console.log(this.results);
+                        store.dispatch('result', this.results);
                     })
                     .catch(error => {
                         this.error = error.message;

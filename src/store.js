@@ -13,7 +13,9 @@ export default new Vuex.Store({
         }
     },
     actions: {
-
+        result(state, payload) {
+            state.commit('result', payload);
+        }
     },
     getters: {
         weather(state) {
