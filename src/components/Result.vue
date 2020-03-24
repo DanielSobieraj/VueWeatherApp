@@ -2,73 +2,74 @@
     <v-container text-center>
         <v-row>
             <v-col>
-                <h1>Pogoda dla</h1>
+                <h1>Pogoda <br>dla</h1>
                 <h2>
                     <v-icon color="rgb(255,193,7)">fa-city</v-icon>
                     {{ result.name }}, {{ result.sys.country }}
                 </h2>
             </v-col>
             <v-col cols="12">
-                <h3>Dane dla dnia i godziny</h3>
+                <h3>Czas</h3>
                 <h3>{{ currentDate }}</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-temperature-low</v-icon>
                     Temperatura
-                </p>
+                </h4>
                 <h3>{{ result.main.feels_like }}&deg;C </h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-temperature-high</v-icon>
                     Temperatura odczuwalna
-                </p>
+                </h4>
                 <h3>{{ result.main.temp }}&deg;C </h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-wind</v-icon>
                     Prędkość wiatru
-                </p>
+                </h4>
                 <h3>{{ result.wind.speed }} m/s</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-cloud</v-icon>
                     Zachmurzenie
-                </p>
+                </h4>
                 <div v-for="(main, id) in result.weather" :key="id">
+                    <img :src="iconURL + main.icon + '.png'" alt="Weather icon">
                     <h3>{{ main.description }}</h3>
                 </div>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-wind</v-icon>
                     Wilgotność powietrza
-                </p>
+                </h4>
                 <h3>{{ result.main.humidity }}%</h3>
             </v-col>
 
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-smog</v-icon>
                     Ciśnienie atmosferyczne
-                </p>
+                </h4>
                 <h3>{{ result.main.pressure }} hPa</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-sun</v-icon>
                     Wschód słońca
-                </p>
+                </h4>
                 <h3>{{ sunriseTime }}</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <p>
+                <h4>
                     <v-icon color="rgb(255,193,7)">fa-moon</v-icon>
                     Zachód słońca
-                </p>
+                </h4>
                 <h3>{{ sunsetTime }}</h3>
             </v-col>
         </v-row>
@@ -81,7 +82,9 @@
     export default {
         name: "Result",
         data() {
-            return {}
+            return {
+                iconURL: 'http://openweathermap.org/img/wn/'
+            }
         },
         computed: {
             result() {
@@ -99,7 +102,7 @@
             },
             currentDate() {
                 const today = new Date();
-                const date = today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear();
+                const date = today.getDate() + '.' + ("0" + (today.getMonth() + 1)).slice(-2) + '.' + today.getFullYear();
                 const time = today.getHours() + ":" + today.getMinutes();
                 const dateTime = date + ' ' + time;
                 return dateTime
