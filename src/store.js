@@ -18,7 +18,7 @@ export default new Vuex.Store({
         }
     },
     getters: {
-        weather(state) {
+        result(state) {
             return state.results
         }
     }
