@@ -26,7 +26,7 @@
                 Your browser does not support the audio element.
             </audio>
             <br>
-            <h3 style="width: 100%" class="text-end">Wykonał Daniel Sobieraj</h3>
+            <h3 style="width: 100%" class="text-end">Wykonał: Daniel Sobieraj</h3>
         </v-footer>
     </v-app>
 </template>

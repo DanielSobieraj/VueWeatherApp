@@ -11,17 +11,9 @@
                         @keyup.enter="citySubmit"
                         aria-autocomplete="none"
                         v-model="city"
+                        hint="Naciśnij enter, aby zatwierdzić"
+                        :error-messages="error"
                 />
-            </v-col>
-            <v-col class="d-flex justify-center" md="2">
-                <v-btn
-                        color="rgb(255,193,7)"
-                        dark
-                        large
-                        @click="citySubmit"
-                        rounded>
-                    Wyszukaj
-                </v-btn>
             </v-col>
         </v-row>
     </v-container>
@@ -31,18 +23,20 @@
     import axios from 'axios';
     import store from '../store'
 
+    const API = 'cd24e008a27243e0786cb71906677d9a';
+
     export default {
         name: 'Form',
         data() {
             return {
                 city: 'Częstochowa',
                 results: [],
-                error: []
+                error: [],
             }
         },
         methods: {
             citySubmit() {
-                axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + this.city + '&APPID=cd24e008a27243e0786cb71906677d9a&units=metric')
+                axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + this.city + '&APPID=' + API + '&units=metric' + '&lang=pl')
                     .then(response => {
                         this.results = response.data;
                         this.city = '';
@@ -50,7 +44,13 @@
                     })
                     .catch(error => {
                         this.error = error.message;
-                        alert('Błąd - "' + error + '"')
+                        if (this.error == "Request failed with status code 404") {
+                            this.error = 'Miasto nie istnieje'
+                        } else if (this.error == "Request failed with status code 400") {
+                            this.error = 'Błędne lub puste zapytanie'
+                        } else {
+                            this.error('Błąd - "' + error + '"')
+                        }
                     });
             }
         }

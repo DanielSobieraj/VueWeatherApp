@@ -13,63 +13,63 @@
                 <h3>{{ currentDate }}</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-temperature-low</v-icon>
-                    Temperatura
-                </h4>
+                    Temperatura rzeczywista
+                </span>
                 <h3>{{ result.main.feels_like }}&deg;C </h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-temperature-high</v-icon>
                     Temperatura odczuwalna
-                </h4>
+                </span>
                 <h3>{{ result.main.temp }}&deg;C </h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-wind</v-icon>
                     Prędkość wiatru
-                </h4>
+                </span>
                 <h3>{{ result.wind.speed }} m/s</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-cloud</v-icon>
                     Zachmurzenie
-                </h4>
+                </span>
                 <div v-for="(main, id) in result.weather" :key="id">
-                    <img :src="iconURL + main.icon + '.png'" alt="Weather icon">
+                    <img height="30px" :src="iconURL + main.icon + '.png'" alt="Weather icon">
                     <h3>{{ main.description }}</h3>
                 </div>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
-                    <v-icon color="rgb(255,193,7)">fa-wind</v-icon>
+                <span>
+                    <v-icon color="rgb(255,193,7)">fa-water</v-icon>
                     Wilgotność powietrza
-                </h4>
+                </span>
                 <h3>{{ result.main.humidity }}%</h3>
             </v-col>
 
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-smog</v-icon>
                     Ciśnienie atmosferyczne
-                </h4>
+                </span>
                 <h3>{{ result.main.pressure }} hPa</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-sun</v-icon>
                     Wschód słońca
-                </h4>
+                </span>
                 <h3>{{ sunriseTime }}</h3>
             </v-col>
             <v-col cols="12" xs="6" md="3">
-                <h4>
+                <span>
                     <v-icon color="rgb(255,193,7)">fa-moon</v-icon>
                     Zachód słońca
-                </h4>
+                </span>
                 <h3>{{ sunsetTime }}</h3>
             </v-col>
         </v-row>
@@ -103,7 +103,7 @@
             currentDate() {
                 const today = new Date();
                 const date = today.getDate() + '.' + ("0" + (today.getMonth() + 1)).slice(-2) + '.' + today.getFullYear();
-                const time = today.getHours() + ":" + today.getMinutes();
+                const time = ("0" + today.getHours()).slice(-2) + ":" + ("0" + today.getMinutes()).slice(-2);
                 const dateTime = date + ' ' + time;
                 return dateTime
             }
