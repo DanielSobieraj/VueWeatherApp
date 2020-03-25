@@ -12,7 +12,7 @@
                     >
                     </v-img>
 
-                    <h1 class="text-center">Aplikacja pogodowa</h1>
+                    <h1 class="text-center">Kartka pogodowa</h1>
                 </v-col>
             </v-row>
             <v-content>

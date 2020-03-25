@@ -1,7 +1,9 @@
 <template>
+
     <v-container>
-        <v-row class="d-flex justify-center">
+        <v-row class="d-flex justify-center align-center">
             <v-col class="pb-0" cols="12" md="5">
+
                 <v-text-field
                         clearable
                         color="rgb(255,193,7)"
@@ -45,9 +47,9 @@
                     .catch(error => {
                         this.error = error.message;
                         if (this.error == "Request failed with status code 404") {
-                            this.error = 'Miasto nie istnieje'
+                            this.error = 'Nie znaleziono miasta'
                         } else if (this.error == "Request failed with status code 400") {
-                            this.error = 'Błędne lub puste zapytanie'
+                            this.error = 'Błędne/puste zapytanie'
                         } else {
                             this.error('Błąd - "' + error + '"')
                         }
