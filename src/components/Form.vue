@@ -3,7 +3,6 @@
     <v-container>
         <v-row class="d-flex justify-center align-center">
             <v-col class="pb-0" cols="12" md="5">
-
                 <v-text-field
                         clearable
                         color="rgb(255,193,7)"
